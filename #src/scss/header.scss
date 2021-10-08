@@ -2,10 +2,16 @@
 
 //====================================================================================================
 .header {
-	background: url('../img/header/header-bg.jpg') top center no-repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 300;
+
+	width: 100%;
+	background: #fff url('../img/header/header-bg.jpg') top center no-repeat;
 
 	@media (max-width:$md3+px) {
-		background: url('../img/header/header-bg.jpg') 0 -20px no-repeat;
+		background: #fff url('../img/header/header-bg.jpg') 0 -20px no-repeat;
 	}
 
 	// .header__top
@@ -19,7 +25,6 @@
 }
 
 .top-header {
-
 
 	// .top-header__content
 	&__content {
@@ -325,6 +330,7 @@
 		}
 
 		@media (max-width:$md2+px) {
+			display: none;
 			padding: 0;
 		}
 	}
