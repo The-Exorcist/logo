@@ -1087,6 +1087,18 @@ for (let index = 0; index < checkboxCategories.length; index++) {
 		}
 	});
 }
+
+if (isMobile.any()) {
+	const filterTitle = document.querySelector('.filter__title');
+	const filterContent = document.querySelector('.filter__content');
+
+	_slideUp(filterContent)
+
+	filterTitle.addEventListener("click", function (e) {
+		filterTitle.classList.toggle('_active')
+		_slideToggle(filterTitle.nextElementSibling)
+	});
+}
 //let btn = document.querySelectorAll('button[type="submit"],input[type="submit"]');
 let forms = document.querySelectorAll('form');
 if (forms.length > 0) {
@@ -1573,7 +1585,7 @@ if (quantityButtons.length > 0) {
 }
 
 //RANGE
-const priceSlider = document.querySelector('.price-filter__slider');
+const priceSlider = document.querySelector('.price-filter__range');
 if (priceSlider) {
 
 	let textFrom = priceSlider.getAttribute('data-from');
@@ -1582,19 +1594,19 @@ if (priceSlider) {
 	noUiSlider.create(priceSlider, {
 		start: [0, 200000],
 		connect: true,
-		tooltips: [wNumb({ decimals: 0, prefix: textFrom + ' ' }), wNumb({ decimals: 0, prefix: textTo + ' ' })],
+		// tooltips: [wNumb({ decimals: 0, prefix: textFrom + ' ' }), wNumb({ decimals: 0, prefix: textTo + ' ' })],
+		tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
 		range: {
 			'min': [0],
 			'max': [200000]
 		}
 	});
 
-	/*
+
 	const priceStart = document.getElementById('price-start');
 	const priceEnd = document.getElementById('price-end');
 	priceStart.addEventListener('change', setPriceValues);
 	priceEnd.addEventListener('change', setPriceValues);
-	*/
 
 	function setPriceValues() {
 		let priceStartValue;
