@@ -61,3 +61,15 @@ for (let index = 0; index < checkboxCategories.length; index++) {
 		}
 	});
 }
+
+if (isMobile.any()) {
+	const filterTitle = document.querySelector('.filter__title');
+	const filterContent = document.querySelector('.filter__content');
+
+	_slideUp(filterContent)
+
+	filterTitle.addEventListener("click", function (e) {
+		filterTitle.classList.toggle('_active')
+		_slideToggle(filterTitle.nextElementSibling)
+	});
+}

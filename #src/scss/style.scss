@@ -79,11 +79,13 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 //@import "datepicker";
 //@import "lightgallery";
-//@import "pagging";
+@import "pagging";
+@import "nouislider";
 @import "popup";
 @import "header";
 @import "footer";
 @import "home";
+@import "catalog";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 
 //<ОСНОВНОЙ БЛОК>====================================================================================================
@@ -177,9 +179,64 @@ body {
 	}
 }
 
+//========================================================================================================================================================
+.breadcrumbs {
+
+	margin: 0px 0px 20px 0px;
+
+	@media (max-width:$md2+px) {
+		overflow: auto;
+		height: 20px;
+	}
+
+	// .breadcrumbs__list
+	&__list {
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+
+		@media (min-width:$md2+px) {
+			flex-wrap: wrap;
+		}
+
+		li {
+			padding: 0px 20px 0px 0px;
+			margin: 0px 10px 0px 0px;
+			background: url('../img/icons/breadcrubs-arrow-b.png') right no-repeat;
+
+			@media (min-width:$md2+px) {
+				margin: 0px 10px 5px 0px;
+			}
+		}
+	}
+
+	// .breadcrumbs__link
+	&__link {
+		color: #1ab9ce;
+		font-size: 14px;
+		font-weight: 300;
+		text-align: left;
+		text-decoration: underline;
+	}
+
+	// .breadcrumbs__item
+	&__item {
+		color: #999999;
+		font-size: 14px;
+		font-weight: 300;
+	}
+}
+
+._webp .breadcrumbs__list li:last-child {
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+//========================================================================================================================================================
 .menu-page {
 	position: relative;
-	background: url('../img/menu-header/menu-header-bg.jpg') 0 0 repeat;
+	background: #009eb2 url('../img/menu-header/menu-header-bg.jpg') 0 0 no-repeat;
 
 	// .menu-page__header
 	&__header {
@@ -634,6 +691,21 @@ body {
 		padding: 10px 0px 0px 0px;
 	}
 
+	&__compare {
+		display: inline-block;
+
+		color: #ffffff;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 21px;
+
+		padding: 0px 0 0px 33px;
+		background: url('../img/icons/compare.png') left no-repeat;
+
+		span {
+			border-bottom: 1px dashed;
+		}
+	}
 
 	// .hover-item-product__cart
 	&__cart {
@@ -642,6 +714,10 @@ body {
 		height: 57px;
 		background: url('../img/icons/cart-orange.png') 0 0 no-repeat;
 		margin: 0 auto 25px auto;
+
+		&_catalog {
+			margin: 0;
+		}
 	}
 
 	// .hover-item-product__footer
