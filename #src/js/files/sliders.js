@@ -231,3 +231,30 @@ if (document.querySelector('.brands-slider')) {
 	});
 }
 
+if (document.querySelector('.images-product')) {
+	let imagesProductSubslider = new Swiper('.images-product__subslider', {
+		observer: true,
+		observeParents: true,
+		slidesPerView: 4,
+		spaceBetween: 0,
+		// autoHeight: true,
+		speed: 800,
+		//touchRatio: 0,
+		//simulateTouch: false,
+		// loop: true,
+	});
+
+	let imagesProductMainslider = new Swiper('.images-product__mainslider', {
+		observer: true,
+		observeParents: true,
+		slidesPerView: 1,
+		spaceBetween: 0,
+		// autoHeight: true,
+		thumbs: {
+			swiper: imagesProductSubslider,
+		},
+		speed: 800
+
+	});
+}
+

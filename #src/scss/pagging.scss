@@ -3,17 +3,17 @@
 	align-items: center;
 	justify-content: center;
 
+
 	// .pagging__arrow
 	&__arrow {
 		width: 30px;
-		height: 24px;
+		height: 25px;
 		background: url('../img/icons/sl-arrow-grey.svg') 0 0 / 100% no-repeat;
 		cursor: pointer;
 
 		@media (any-hover: hover) {
 			&:hover {
-				width: 33px;
-				height: 25px;
+				height: 26px;
 				background: url('../img/icons/sl-arrow-h.svg') 0 0 / 100% no-repeat;
 			}
 		}
