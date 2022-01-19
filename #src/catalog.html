@@ -178,19 +178,19 @@
 											Цена (руб.):
 										</div>
 										<div class="section-filter__body">
-											<div class="price-filter">
-												<div class="price-filter__range"></div>
+											<div class="price-filter" data-range>
+												<div data-range-item class="price-filter__range"></div>
 												<div class="price-filter__values values-price-filter">
 													<div class="values-price-filter__column">
 														<div class="values-price-filter__label">от</div>
 														<div class="values-price-filter__input">
-															<input class="input" id="price-start" autocomplete="off" type="text" name="form[]">
+															<input data-range-from="0" value="20000" class="input" id="price-start" autocomplete="off" type="text" name="form[]">
 														</div>
 													</div>
 													<div class="values-price-filter__column">
 														<div class="values-price-filter__label">до</div>
 														<div class="values-price-filter__input">
-															<input class="input" id="price-end" autocomplete="off" type="text" name="form[]">
+															<input data-range-to="200000" value="180000" class="input" id="price-end" autocomplete="off" type="text" name="form[]">
 														</div>
 													</div>
 												</div>

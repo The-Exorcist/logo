@@ -484,38 +484,82 @@ if (quantityButtons.length > 0) {
 }
 
 //RANGE
-const priceSlider = document.querySelector('.price-filter__range');
-if (priceSlider) {
 
-	let textFrom = priceSlider.getAttribute('data-from');
-	let textTo = priceSlider.getAttribute('data-to');
+const rangeItems = document.querySelectorAll('[data-range]');
+if (rangeItems.length) {
+	const rangeItems = document.querySelectorAll('[data-range-item]');
+	const fromValue = document.querySelector('[data-range-from]');
+	const toValue = document.querySelector('[data-range-to]');
+	const inputs = [fromValue, toValue]
 
-	noUiSlider.create(priceSlider, {
-		start: [0, 200000],
-		connect: true,
-		// tooltips: [wNumb({ decimals: 0, prefix: textFrom + ' ' }), wNumb({ decimals: 0, prefix: textTo + ' ' })],
-		tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
-		range: {
-			'min': [0],
-			'max': [200000]
+
+	rangeItems.forEach((rangeItem) => {
+		const item = document.querySelector('[data-range-item]');
+
+		noUiSlider.create(rangeItem, {
+			start: [Number(fromValue.value), Number(toValue.value)],
+			connect: true,
+			tooltips: [true, true],
+			range: {
+				min: [Number(fromValue.dataset.rangeFrom)],
+				max: [Number(toValue.dataset.rangeTo)],
+			},
+		})
+
+		item.noUiSlider.on('update', function (values, handle) {
+			inputs[handle].value = Math.round(values[handle])
+		})
+
+		const setRangeSlider = (i, value) => {
+			let arr = [null, null]
+			arr[i] = value
+			item.noUiSlider.set(arr)
 		}
+
+		inputs.forEach((input, index) => {
+			input.addEventListener("change", function (e) {
+				setRangeSlider(index, e.currentTarget.value)
+			});
+		});
 	});
-
-
-	const priceStart = document.getElementById('price-start');
-	const priceEnd = document.getElementById('price-end');
-	priceStart.addEventListener('change', setPriceValues);
-	priceEnd.addEventListener('change', setPriceValues);
-
-	function setPriceValues() {
-		let priceStartValue;
-		let priceEndValue;
-		if (priceStart.value != '') {
-			priceStartValue = priceStart.value;
-		}
-		if (priceEnd.value != '') {
-			priceEndValue = priceEnd.value;
-		}
-		priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
-	}
 }
+
+// if (priceSlider) {
+
+// 	const inputs = [fromValue, toValue]
+
+
+// 	rangeItems.forEach(rangeItem => {
+// 		let textFrom = priceSlider.getAttribute('data-from');
+// 		let textTo = priceSlider.getAttribute('data-to');
+
+// 		noUiSlider.create(priceSlider, {
+// 			start: [0, 200000],
+// 			connect: true,
+// 			// tooltips: [wNumb({ decimals: 0, prefix: textFrom + ' ' }), wNumb({ decimals: 0, prefix: textTo + ' ' })],
+// 			// tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
+// 			tooltips: [Number(fromValue.value), Number(toValue.value)],
+// 			range: {
+// 				'min': [fromValue.value],
+// 				'max': [toValue.value]
+// 			}
+// 		});
+// 	});
+
+	// const priceStart = document.getElementById('price-start');
+	// const priceEnd = document.getElementById('price-end');
+	// priceStart.addEventListener('change', setPriceValues);
+	// priceEnd.addEventListener('change', setPriceValues);
+
+	// function setPriceValues() {
+	// 	let priceStartValue;
+	// 	let priceEndValue;
+	// 	if (priceStart.value != '') {
+	// 		priceStartValue = priceStart.value;
+	// 	}
+	// 	if (priceEnd.value != '') {
+	// 		priceEndValue = priceEnd.value;
+	// 	}
+	// 	priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
+	// }
+// }
